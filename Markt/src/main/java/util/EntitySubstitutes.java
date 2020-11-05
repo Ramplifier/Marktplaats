@@ -1,6 +1,7 @@
 package util;
 
 import domain.Adres;
+import domain.BezorgOpties;
 import domain.Gebruiker;
 
 public class EntitySubstitutes {
@@ -17,6 +18,7 @@ public class EntitySubstitutes {
         g.setAdres(adres);
         g.setActief(true);
         g.setAkkoord(true);
+        g.setBezorgOpties(new BezorgOpties());
         return g;
     }
 

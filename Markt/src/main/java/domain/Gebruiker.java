@@ -2,10 +2,7 @@ package domain;
 
 import lombok.Data;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -22,6 +19,9 @@ public class Gebruiker extends Entiteit {
 
     @OneToOne(cascade = CascadeType.ALL)
     private Adres adres;
+
+    @Embedded
+    private BezorgOpties bezorgOpties;
 
     private boolean isAkkoord;
 

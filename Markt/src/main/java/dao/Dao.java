@@ -14,10 +14,16 @@ public abstract class Dao<T, I> {
         return em.find(T(), id);
     }
 
-    public void save(T e) {
+    public T get(String email) {
+        return em.find(T(), email);
+    }
+
+    public void save(T e) throws NullPointerException {
         em.getTransaction().begin();
         em.persist(e);
         em.getTransaction().commit();
+
+
     }
 
     @SuppressWarnings("unchecked")
