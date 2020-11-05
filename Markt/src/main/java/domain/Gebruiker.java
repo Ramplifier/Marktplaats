@@ -17,7 +17,7 @@ public class Gebruiker extends Entiteit {
     @Column(nullable = false)
     private String naam;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Adres adres;
 
     @Embedded

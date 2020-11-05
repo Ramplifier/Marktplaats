@@ -10,7 +10,7 @@ public class Inloggen {
 
     public void start() {
         while (true) {
-            System.out.println("Account aanmaken");
+            System.out.println("Inloggen");
             System.out.println("----------------------------------------------");
             String email = invoerveld("email");
             String wachtwoord = invoerveld("Wachtwoord");

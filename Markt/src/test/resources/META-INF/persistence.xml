@@ -8,6 +8,8 @@
     <persistence-unit name="MySQL-pubs">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>domain.Gebruiker</class>
+        <class>domain.Adres</class>
+        <class>domain.BezorgOpties</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test"/>

@@ -26,7 +26,6 @@ public class GebruikerAanmaken {
         g.setEmail(invoerveld("Email"));
         g.setWachtwoord(invoerveld("Wachtwoord"));
         g.setNaam(invoerveld("naam"));
-        System.out.println(g.getEmail());
         if (invoerveldYN("Wil je een adres toevoegen?")) {
             g.setAdres(adresAanmaken());
         }
@@ -44,7 +43,7 @@ public class GebruikerAanmaken {
     private Adres adresAanmaken() {
         Adres a = new Adres();
         a.setStraatnaam(invoerveld("Straatnaam"));
-        a.setHuisnummer(invoerveldNum("Huisnummer"));
+        a.setHuisnummer(invoerveldInt("Huisnummer"));
         a.setToevoeging(invoerveld("Toevoeging"));
         a.setPostcode(invoerveld("Postcode"));
         a.setWoonplaats(invoerveld("Woonplaats"));
@@ -54,9 +53,9 @@ public class GebruikerAanmaken {
     private BezorgOpties bezorgOptiesAanmaken() {
         BezorgOpties bo = new BezorgOpties();
         bo.setAfhalen(invoerveldYN("Afhalen bij de verkoper?"));
-        bo.setMagazijn(invoerveldYN("Afhalen op het magazijn"));
-        bo.setRembours(invoerveldYN("Versturen onder rembours"));
-        bo.setVersturen(invoerveldYN("Versturen zonder rembours"));
+        bo.setMagazijn(invoerveldYN("Afhalen op het magazijn?"));
+        bo.setVersturen(invoerveldYN("Versturen zonder rembours?"));
+        bo.setRembours(invoerveldYN("Versturen onder rembours?"));
         return bo;
     }
 

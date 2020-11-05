@@ -1,16 +1,36 @@
 package FrontEnd;
 
+import dao.Gebruiker_Dao;
+import dao.Product_Dao;
+import domain.BezorgOpties;
 import domain.Gebruiker;
+import domain.Product;
+import org.App;
+import util.EntitySubstitutes;
 
 import java.util.Scanner;
 
 public class Hoofdpagina {
-
-    public static Gebruiker ingelogdeGebruiker = null;
+    Gebruiker_Dao gebruiker_dao = new Gebruiker_Dao(App.em);
+    Product_Dao product_dao = new Product_Dao(App.em);
+    public static Gebruiker ingelogdeGebruiker;
+    boolean sessie = true;
 
     public void start() {
+        gebruiker_dao.save(EntitySubstitutes.getGebruikerVolledig());
+        ingelogdeGebruiker = gebruiker_dao.getByEmail("sjwarkel@gmail.com");
+        Product p = new Product();
+        p.setNaam("fiets");
+        p.setEigenaarId(ingelogdeGebruiker);
+        p.setBezorgOpties(new BezorgOpties());
+        Product p2 = new Product();
+        p2.setNaam("ds");
+        p2.setEigenaarId(ingelogdeGebruiker);
+        p2.setBezorgOpties(new BezorgOpties());
+        product_dao.save(p);
+        product_dao.save(p2);
 
-        while (true) {
+        while (sessie) {
             if (ingelogdeGebruiker == null) {
                 bezoekerIsIngelogd();
 
@@ -36,14 +56,14 @@ public class Hoofdpagina {
             try {
                 switch (s) {
                     case "1":
-                        System.out.println("bied een product aan.");
+                        new ProductAanbieden().start();
                         return;
                     case "2":
-                        System.out.println("bekijk alle producten.");
+                        product_dao.findAll().forEach(p -> System.out.println(p.getNaam()));
                         return;
                     case "3":
                         ingelogdeGebruiker = null;
-                        break;
+                        return;
                     case "x":
                         System.out.println("Tot ziens.");
                         return;
@@ -84,6 +104,7 @@ public class Hoofdpagina {
                     new Inloggen().start();
                     break;
                 case "x":
+                    sessie = false;
                     System.out.println("Tot ziens.");
                     return;
                 default:

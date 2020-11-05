@@ -18,7 +18,10 @@ public class EntitySubstitutes {
         g.setAdres(adres);
         g.setActief(true);
         g.setAkkoord(true);
-        g.setBezorgOpties(new BezorgOpties());
+        BezorgOpties b = new BezorgOpties();
+        b.setVersturen(true);
+        b.setAfhalen(true);
+        g.setBezorgOpties(b);
         return g;
     }
 
