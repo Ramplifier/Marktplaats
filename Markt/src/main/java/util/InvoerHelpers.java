@@ -23,6 +23,18 @@ public class InvoerHelpers {
         return num;
     }
 
+    public static Long invoerveldLong(String veld) {
+        System.out.print(veld + ": ");
+        Long num;
+        try {
+            num = Long.parseLong(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Dit is geen geldig huisnummer");
+            return invoerveldLong(veld);
+        }
+        return num;
+    }
+
     public static BigDecimal invoerveldBigDecimal(String veld) {
         System.out.println(veld + ": (*.00) ");
         BigDecimal num;
